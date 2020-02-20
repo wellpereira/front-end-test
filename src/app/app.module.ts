@@ -7,12 +7,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
-import { TutorialAppComponent } from './core/tutorial-app/tutorial-app.component';
+import { HomeComponent } from './core/home/home.component';
 
 
 const routes: Routes = [
-  { path: 'tutorial', component: TutorialAppComponent },
-  { path: '',    redirectTo: '/tutorial', pathMatch: 'full' },  
+  { path: 'home', component: HomeComponent },
+  { path: '',    redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 
