@@ -16,7 +16,7 @@ export class ListListsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private serviceLists: ListsService
+    private listsService: ListsService
     ) { }
 
   ngOnInit() {
@@ -27,10 +27,14 @@ export class ListListsComponent implements OnInit {
   }
 
   get() {
-    this.serviceLists.get(this.categoryId).subscribe(res => this.lists = res);
+    this.listsService.get(this.categoryId).subscribe(res => this.lists = res);
   }
 
   showListInCategory(listId: number) {
     this.router.navigate(['/list/edit/' + listId, { 'categoryId': this.categoryId }]);
+  }
+
+  showItensInList(listId: number) {
+    this.router.navigate(['/items/' + listId, { 'categoryId': this.categoryId }]);
   }
 }
