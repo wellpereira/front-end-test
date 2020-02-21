@@ -17,9 +17,16 @@ import { ListListsComponent } from './lists/list-lists/list-lists.component';
 import { FormsModule } from '@angular/forms';
 import { EditListsComponent } from './lists/edit-lists/edit-lists.component';
 import { AddListsComponent } from './lists/add-lists/add-lists.component';
+import { AddItensComponent } from './itens/add-itens/add-itens.component';
+import { EditItensComponent } from './itens/edit-itens/edit-itens.component';
+import { ListItensComponent } from './itens/list-itens/list-itens.component';
+import { ItensModule } from './itens/itens.module';
 
 
 const routes: Routes = [
+  { path: 'itens', component: ListItensComponent },
+  { path: 'itens/edit', component: EditItensComponent },
+  { path: 'itens/new', component: AddItensComponent },
   { path: 'list/new/:categoryId', component: AddListsComponent },
   { path: 'list/edit/:listId', component: EditListsComponent },
   { path: 'lists/:categoryId', component: ListListsComponent },
@@ -44,6 +51,7 @@ const routes: Routes = [
     CategoriesModule,
     ListsModule,
     FormsModule,
+    ItensModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],
