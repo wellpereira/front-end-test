@@ -1,17 +1,1 @@
-<div class="menu-main">
-  <button mat-button routerLink="home">Home</button>
-
-  <button mat-button [matMenuTriggerFor]="menu1">Categories</button>
-  <mat-menu #menu1="matMenu">
-    <button mat-menu-item routerLink="categories">List</button>
-    <button mat-menu-item routerLink="category/new">New</button>
-  </mat-menu>
-
-  <button mat-button [matMenuTriggerFor]="menu2">Lists</button>
-  <mat-menu #menu2="matMenu">
-    <button mat-menu-item routerLink="lists">List</button>
-    <button mat-menu-item routerLink="list/new">New</button>
-  </mat-menu>
-
-</div>
 <router-outlet></router-outlet>
