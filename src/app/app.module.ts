@@ -10,17 +10,18 @@ import { PageNotFoundComponent } from './core/page-not-found/page-not-found.comp
 import { HomeComponent } from './core/home/home.component';
 import { CategoriesModule } from './categories/categories.module';
 import { ListCategoriesComponent } from './categories/list-categories/list-categories.component';
-import { NewCategoryComponent } from './categories/new-category/new-category.component';
+import { AddCategoriesComponent } from './categories/add-categories/add-categories.component';
+import { EditCategoriesComponent } from './categories/edit-categories/edit-categories.component';
 import { ListsModule } from './lists/lists.module';
 import { ListListsComponent } from './lists/list-lists/list-lists.component';
-import { NewListComponent } from './lists/new-list/new-list.component';
+import { FormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
   { path: 'lists', component: ListListsComponent },
-  { path: 'list/new', component: NewListComponent },
   { path: 'categories', component: ListCategoriesComponent },
-  { path: 'category/new', component: NewCategoryComponent },
+  { path: 'category/new', component: AddCategoriesComponent },
+  { path: 'category/edit/:categoryId', component: EditCategoriesComponent },
   { path: 'home', component: HomeComponent },
   { path: '',    redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
@@ -38,6 +39,7 @@ const routes: Routes = [
     CoreModule,
     CategoriesModule,
     ListsModule,
+    FormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

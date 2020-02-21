@@ -1,13 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NewCategoryComponent } from './new-category/new-category.component';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AppMaterialModule } from '../app.material.module';
+import { AddCategoriesComponent } from './add-categories/add-categories.component';
+import { EditCategoriesComponent } from './edit-categories/edit-categories.component';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
-  declarations: [NewCategoryComponent, ListCategoriesComponent],
-  exports: [NewCategoryComponent, ListCategoriesComponent],
+  declarations: [ListCategoriesComponent, AddCategoriesComponent, EditCategoriesComponent],
+  exports: [ListCategoriesComponent, AddCategoriesComponent, EditCategoriesComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule,
+    AppMaterialModule,
+    RouterModule,
+    FormsModule
   ]
 })
 export class CategoriesModule { }
