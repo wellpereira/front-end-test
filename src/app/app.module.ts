@@ -18,7 +18,7 @@ import { FormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
-  { path: 'lists', component: ListListsComponent },
+  { path: 'lists/:categoryId', component: ListListsComponent },
   { path: 'categories', component: ListCategoriesComponent },
   { path: 'category/new', component: AddCategoriesComponent },
   { path: 'category/edit/:categoryId', component: EditCategoriesComponent },

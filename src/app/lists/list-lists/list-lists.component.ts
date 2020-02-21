@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { List } from 'src/app/models/list';
+import { ListsService } from '../lists.service';
 
 @Component({
   selector: 'app-list-lists',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListListsComponent implements OnInit {
 
-  constructor() { }
+  lists: List[] = [];
+  categoryId: number;
+
+  constructor(
+    private route: ActivatedRoute,
+    private serviceLists: ListsService
+    ) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.categoryId = params.categoryId;
+      this.get();
+    });
+  }
+
+  get() {
+    this.serviceLists.get(this.categoryId).subscribe(res => this.lists = res);
   }
 
 }
