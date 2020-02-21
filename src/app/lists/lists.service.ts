@@ -11,24 +11,24 @@ export class ListsService {
 
   constructor(private http: HttpClient) { }
 
-  get(idCategory: number): Observable<List[]> {
-    return this.http.get<List[]>(`${environment.apiURL}/categories/${idCategory}/lists`);
+  get(categoryId: number): Observable<List[]> {
+    return this.http.get<List[]>(`${environment.apiURL}/categories/${categoryId}/lists`);
   }
 
-  getId(id: number, idCategory: number): Observable<List> {
-    return this.http.get<List>(`${environment.apiURL}/categories/${idCategory}/lists/${id}`);
+  getId(id: number, categoryId: number): Observable<List> {
+    return this.http.get<List>(`${environment.apiURL}/categories/${categoryId}/lists/${id}`);
   }
 
-  // post(c: List): Observable<List> {
-    //   return this.http.post<List>(`${environment.apiURL}/categories`, c);
-    // }
-    
-  put(l: List): Observable<List> {
-    return this.http.put<List>(`${environment.apiURL}/categories/${l.id}`, {name: l.name});
+  post(l: List, categoryId: number): Observable<List> {
+    return this.http.post<List>(`${environment.apiURL}/categories/${categoryId}/lists`, {name: l.name});
+  }
+ 
+  put(l: List, categoryId: number): Observable<List> {
+    return this.http.put<List>(`${environment.apiURL}/categories/${categoryId}/lists/${l.id}`, {name: l.name});
   }
 
-  // delete(c: List): Observable<any> {
-  //   return this.http.delete(`${environment.apiURL}/categories/${c.id}`);
-  // }
+  delete(l: List, categoryId: number): Observable<any> {
+    return this.http.delete(`${environment.apiURL}/categories/${categoryId}/lists/${l.id}`);
+  }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { List } from 'src/app/models/list';
 import { ListsService } from '../lists.service';
 
@@ -15,6 +15,7 @@ export class ListListsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private serviceLists: ListsService
     ) { }
 
@@ -29,4 +30,7 @@ export class ListListsComponent implements OnInit {
     this.serviceLists.get(this.categoryId).subscribe(res => this.lists = res);
   }
 
+  showListInCategory(listId: number) {
+    this.router.navigate(['/list/edit/' + listId, { 'categoryId': this.categoryId }]);
+  }
 }

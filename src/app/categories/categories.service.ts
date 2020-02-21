@@ -28,7 +28,6 @@ export class CategoriesService {
   }
 
   put(c: Category): Observable<Category> {
-    console.log(c);
     return this.http.put<Category>(`${environment.apiURL}/categories/${c.id}`, {name: c.name});
   }
 }

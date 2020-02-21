@@ -15,9 +15,13 @@ import { EditCategoriesComponent } from './categories/edit-categories/edit-categ
 import { ListsModule } from './lists/lists.module';
 import { ListListsComponent } from './lists/list-lists/list-lists.component';
 import { FormsModule } from '@angular/forms';
+import { EditListsComponent } from './lists/edit-lists/edit-lists.component';
+import { AddListsComponent } from './lists/add-lists/add-lists.component';
 
 
 const routes: Routes = [
+  { path: 'list/new/:categoryId', component: AddListsComponent },
+  { path: 'list/edit/:listId', component: EditListsComponent },
   { path: 'lists/:categoryId', component: ListListsComponent },
   { path: 'categories', component: ListCategoriesComponent },
   { path: 'category/new', component: AddCategoriesComponent },

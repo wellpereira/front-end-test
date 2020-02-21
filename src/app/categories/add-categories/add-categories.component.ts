@@ -9,7 +9,7 @@ import { Category } from 'src/app/models/category';
 })
 export class AddCategoriesComponent implements OnInit {
 
-  category: Category = { id:"", name: "" };
+  category: Category = { id: 0, name: "" };
 
   constructor(private categoryService: CategoriesService) { }
 
