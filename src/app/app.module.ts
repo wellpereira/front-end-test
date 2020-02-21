@@ -16,6 +16,7 @@ import { ListListsComponent } from './lists/list-lists/list-lists.component';
 import { FormsModule } from '@angular/forms';
 import { EditListsComponent } from './lists/edit-lists/edit-lists.component';
 import { AddListsComponent } from './lists/add-lists/add-lists.component';
+import { ItemsModule } from './items/items.module';
 
 
 const routes: Routes = [
@@ -42,6 +43,7 @@ const routes: Routes = [
     CategoriesModule,
     ListsModule,
     FormsModule,
+    ItemsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],
