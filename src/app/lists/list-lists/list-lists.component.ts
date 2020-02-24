@@ -34,7 +34,7 @@ export class ListListsComponent implements OnInit {
     this.router.navigate(['/list/edit/' + listId, { 'categoryId': this.categoryId }]);
   }
 
-  showItensInList(listId: number) {
-    this.router.navigate(['/items/' + listId, { 'categoryId': this.categoryId }]);
+  showItemsInList(listId: number) {
+    this.router.navigate(['/items/' + this.categoryId, { 'listId': listId }]);
   }
 }
