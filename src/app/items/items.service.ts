@@ -20,7 +20,7 @@ export class ItemsService {
   }
 
   post(categoryId: number, listId: number, i: Item): Observable<Item> {
-    return this.http.post<Item>(`${environment.apiURL}/categories/${categoryId}/lists/${listId}/items`, {name: i.name, done: i.done});
+    return this.http.post<Item>(`${environment.apiURL}/categories/${categoryId}/lists/${listId}/items`, {name: i.name});
   }
  
   put(categoryId: number, listId: number, i: Item): Observable<Item> {

@@ -4,9 +4,11 @@ import { ListItemsComponent } from './list-items/list-items.component';
 import { AppMaterialModule } from '../app.material.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { AddItemsComponent } from './add-items/add-items.component';
+import { EditItemsComponent } from './edit-items/edit-items.component';
 
 @NgModule({
-  declarations: [ListItemsComponent],
+  declarations: [ListItemsComponent, AddItemsComponent, EditItemsComponent],
   exports: [ListItemsComponent],
   imports: [
     CommonModule,

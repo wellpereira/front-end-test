@@ -18,16 +18,23 @@ import { EditListsComponent } from './lists/edit-lists/edit-lists.component';
 import { AddListsComponent } from './lists/add-lists/add-lists.component';
 import { ItemsModule } from './items/items.module';
 import { ListItemsComponent } from './items/list-items/list-items.component';
+import { AddItemsComponent } from './items/add-items/add-items.component';
+import { EditItemsComponent } from './items/edit-items/edit-items.component';
 
 
 const routes: Routes = [
-  { path: 'items/:categoryId', component: ListItemsComponent},
+  { path: 'items/edit/:itemId', component: EditItemsComponent},
+  { path: 'items/new/:listId', component: AddItemsComponent},
+  { path: 'items/:listId', component: ListItemsComponent},
+
   { path: 'list/new/:categoryId', component: AddListsComponent },
   { path: 'list/edit/:listId', component: EditListsComponent },
   { path: 'lists/:categoryId', component: ListListsComponent },
+
   { path: 'categories', component: ListCategoriesComponent },
   { path: 'category/new', component: AddCategoriesComponent },
   { path: 'category/edit/:categoryId', component: EditCategoriesComponent },
+  
   { path: '',    redirectTo: '/categories', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];

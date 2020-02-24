@@ -35,6 +35,6 @@ export class ListListsComponent implements OnInit {
   }
 
   showItemsInList(listId: number) {
-    this.router.navigate(['/items/' + this.categoryId, { 'listId': listId }]);
+    this.router.navigate(['/items/' + listId, { 'categoryId': this.categoryId }]);
   }
 }

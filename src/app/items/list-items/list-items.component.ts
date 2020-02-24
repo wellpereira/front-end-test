@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from 'src/app/models/item';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ItemsService } from '../items.service';
 
 @Component({
@@ -16,7 +16,8 @@ export class ListItemsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute, 
-    private http: ItemsService) { }
+    private http: ItemsService,
+    private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -26,11 +27,15 @@ export class ListItemsComponent implements OnInit {
     });
   }
 
-  get() {
-    console.log(this.listId);
-    console.log(this.categoryId);
-    console.log('...');
+  get(): void {
     this.http.get(this.categoryId, this.listId).subscribe(res => this.items = res);
   }
 
+  newItem(): void {
+    this.router.navigate(['/items/new/' + this.listId, { 'categoryId': this.categoryId }]);
+  }
+
+  editItem(itemId: number): void {
+    this.router.navigate(['/items/edit/' + itemId, { 'categoryId': this.categoryId, 'listId': this.listId }]);
+  }
 }
