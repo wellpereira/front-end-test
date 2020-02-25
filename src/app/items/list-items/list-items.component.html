@@ -9,6 +9,7 @@
    <mat-nav-list>
      <div class="item-list" *ngFor="let item of items">
        <div class="name-itens-list">
+        <button mat-icon-button color="primary" *ngIf="item.done" disabled>[Done]</button>
          {{ item.id }} - {{ item.name }}
        </div>
        <div class="action-itens-list">
@@ -17,6 +18,9 @@
           </button>
           <button mat-icon-button color="primary" (click)="editItem(item.id)">
             <i class="material-icons md-48">settings</i>
+          </button>
+          <button mat-icon-button color="primary" (click)="done(item)" *ngIf="!item.done">
+            <i class="material-icons md-48">done</i>
           </button>
        </div>
      </div>

@@ -53,4 +53,19 @@ export class ListItemsComponent implements OnInit {
   editItem(itemId: number): void {
     this.router.navigate(['/items/edit/' + itemId, { 'categoryId': this.categoryId, 'listId': this.listId }]);
   }
+
+  done(item: Item): void {
+    item.done = true;
+    this.http.put(this.categoryId, this.listId, item).subscribe(
+      (res => {
+        console.log(res);
+        this.get();
+      }),
+      (res => {
+        console.error(res.error)
+
+      }),
+      (() => console.log('Completed...'))
+    );
+  }
 }
