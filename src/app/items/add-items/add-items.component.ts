@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ItemsService } from '../items.service';
 import { Item } from 'src/app/models/item';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-items',
@@ -16,7 +17,8 @@ export class AddItemsComponent implements OnInit {
   
   constructor(
     private route: ActivatedRoute,
-    private http: ItemsService) { }
+    private http: ItemsService,
+    private location: Location) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -27,13 +29,17 @@ export class AddItemsComponent implements OnInit {
 
   save():void {
     this.http.post(this.categoryId, this.listId, this.item).subscribe(
-      (res => console.log(res)),
+      (res => {
+        console.log(res);
+        this.location.back();
+      }),
       (res => console.error(res.error)),
       (() => console.log('Fim')));
   }
 
-  clear(): void {
+  cancel(): void {
     this.item.name = "";
+    this.location.back();
   }
 
 }

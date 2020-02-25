@@ -27,8 +27,23 @@ export class ListItemsComponent implements OnInit {
     });
   }
 
+  delete(item: Item) {
+    this.http.delete(this.categoryId, this.listId, item).subscribe(
+      (res => {
+        console.log(res);
+        this.get();
+      }),
+      (res => console.error(res)),
+      (() => console.log('Completed...'))
+    );
+  }
+
   get(): void {
-    this.http.get(this.categoryId, this.listId).subscribe(res => this.items = res);
+    this.http.get(this.categoryId, this.listId).subscribe(
+      (res => this.items = res),
+      (res => console.error(res)),
+      (() => console.log('Completed...'))
+    );
   }
 
   newItem(): void {

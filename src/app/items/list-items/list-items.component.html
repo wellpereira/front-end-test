@@ -12,6 +12,9 @@
          {{ item.id }} - {{ item.name }}
        </div>
        <div class="action-itens-list">
+          <button mat-icon-button color="warn" (click)="delete(item)">
+            <i class="material-icons md-48">delete</i>
+          </button>
           <button mat-icon-button color="primary" (click)="editItem(item.id)">
             <i class="material-icons md-48">settings</i>
           </button>

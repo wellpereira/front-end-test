@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Item } from 'src/app/models/item';
 import { ActivatedRoute } from '@angular/router';
 import { ItemsService } from '../items.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-items',
@@ -17,7 +18,8 @@ export class EditItemsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private http: ItemsService) { }
+    private http: ItemsService, 
+    private location: Location) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -43,7 +45,8 @@ export class EditItemsComponent implements OnInit {
   save(): void {
     this.http.put(this.categoryId, this.listId, this.item).subscribe(
       (res => {
-        console.log(res)
+        console.log(res);
+        this.location.back();
       }),
       (res => console.error(res.error)),
       (() => console.log('Completed...'))
@@ -53,11 +56,16 @@ export class EditItemsComponent implements OnInit {
   delete() {
     this.http.delete(this.categoryId, this.listId, this.item).subscribe(
       (res => {
-        console.log(res)
+        console.log(res);
+        this.location.back();
       }),
       (res => console.error(res.error)),
       (() => console.log('Completed...'))
     );
+  }
+
+  cancel() {
+    this.location.back();
   }
 
 }
