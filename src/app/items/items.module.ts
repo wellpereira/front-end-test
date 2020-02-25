@@ -9,7 +9,7 @@ import { EditItemsComponent } from './edit-items/edit-items.component';
 
 @NgModule({
   declarations: [ListItemsComponent, AddItemsComponent, EditItemsComponent],
-  exports: [ListItemsComponent],
+  exports: [ListItemsComponent, AddItemsComponent, EditItemsComponent],
   imports: [
     CommonModule,
     AppMaterialModule,
