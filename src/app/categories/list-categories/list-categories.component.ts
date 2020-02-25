@@ -11,10 +11,25 @@ export class ListCategoriesComponent implements OnInit {
 
   categoriesList: Category[] = [];
 
-  constructor(private categoriesService: CategoriesService) { }
+  constructor(
+    private categoriesService: CategoriesService) { }
+
+  delete(category: Category) {
+    this.categoriesService.delete(category).subscribe(
+      (res => this.get()),
+      (res => console.error(res)),
+      (() => console.log('Completed...'))
+    );
+  }
+
+  get() {
+    this.categoriesService.get().subscribe(
+      (cats => this.categoriesList = cats)
+      );
+  }
 
   ngOnInit() {
-    this.categoriesService.get().subscribe(cats => this.categoriesList = cats);
+    this.get();
   }
 
 }

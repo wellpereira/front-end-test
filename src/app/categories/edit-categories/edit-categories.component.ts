@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Category } from 'src/app/models/category';
 import { CategoriesService } from '../categories.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-categories',
@@ -15,7 +16,8 @@ export class EditCategoriesComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
+    private location: Location
     ) { }
 
   ngOnInit() {
@@ -33,10 +35,28 @@ export class EditCategoriesComponent implements OnInit {
   }
 
   save() {
-    this.categoriesService.put(this.category).subscribe(res => console.log(res));
+    this.categoriesService.put(this.category).subscribe(
+      (res => {
+        console.log(res);
+        this.location.back();
+      }),
+      (res => console.error(res)),
+      (() => console.log('Completed'))
+    );
   }
 
   delete() {
-    this.categoriesService.delete(this.category).subscribe(res => console.log(res));
+    this.categoriesService.delete(this.category).subscribe(
+      (res => {
+        console.log(res);
+        this.location.back();
+      }),
+      (res => console.error(res)),
+      (() => console.log('Completed'))
+    );
+  }
+
+  cancel() {
+    this.location.back();
   }
 }
