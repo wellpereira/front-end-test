@@ -37,4 +37,15 @@ export class ListListsComponent implements OnInit {
   showItemsInList(listId: number) {
     this.router.navigate(['/items/' + listId, { 'categoryId': this.categoryId }]);
   }
+
+  delete(list: List) {
+    this.listsService.delete(list, this.categoryId).subscribe(
+      (res => {
+        console.log(res);
+        this.get();
+      }),
+      (res => console.error(res)),
+      (() => console.log('Completed...'))
+    )
+  }
 }

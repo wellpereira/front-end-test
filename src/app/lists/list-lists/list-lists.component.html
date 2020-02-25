@@ -1,23 +1,24 @@
 <mat-card class="example-card">
   <mat-card-header>
-   <mat-card-title>Lists in Categories (View)</mat-card-title>
+   <mat-card-title>Lists</mat-card-title>
+   <button mat-raised-button color="primary" [routerLink]="['/list/new/', categoryId]">
+    <i class="material-icons md-48">add</i>
+  </button>
  </mat-card-header>
  <mat-card-content>
-   <div>
-    <button mat-raised-button color="primary" aria-label="Example icon-button with a heart icon" [routerLink]="['/list/new/', categoryId]">
-      <i class="material-icons md-48">add</i>
-    </button>
-   </div>
    <mat-nav-list>
      <div class="item-list" *ngFor="let list of lists">
        <div class="name-itens-list">
          {{ list.id }} - {{ list.name }}
        </div>
        <div class="action-itens-list">
-          <button mat-icon-button aria-label="Example icon-button with a heart icon" color="primary" (click)="showListInCategory(list.id)">
+         <button mat-icon-button color="warn" (click)="delete(list)">
+           <i class="material-icons md-48">delete</i>
+         </button>
+          <button mat-icon-button color="primary" (click)="showListInCategory(list.id)">
             <i class="material-icons md-48">settings</i>
           </button>
-          <button mat-icon-button aria-label="Example icon-button with a heart icon" color="primary" (click)="showItemsInList(list.id)">
+          <button mat-icon-button color="primary" (click)="showItemsInList(list.id)">
             <i class="material-icons md-48">toc</i>
           </button>
        </div>

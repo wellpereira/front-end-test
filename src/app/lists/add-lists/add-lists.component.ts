@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ListsService } from '../lists.service';
 import { List } from 'src/app/models/list';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-lists',
@@ -11,12 +12,13 @@ import { List } from 'src/app/models/list';
 export class AddListsComponent implements OnInit {
 
   list: List = { id: null, name: ""};
+  erro: string = '';
   categoryId: number;
 
   constructor(
     private route: ActivatedRoute,
-    private serviceLists: ListsService
-    ) { }
+    private serviceLists: ListsService,
+    private location: Location) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -25,12 +27,20 @@ export class AddListsComponent implements OnInit {
   }
 
   save() {
-    this.serviceLists.post(this.list, this.categoryId).subscribe(res => console.log(res));
+    this.serviceLists.post(this.list, this.categoryId).subscribe(
+      (res => {
+        console.log(res);
+        this.location.back();
+      }),
+      (res => this.erro = res.error),
+      (() => this.location.back())
+    );
   }
 
-  clear() {
+  cancel() {
     this.list.id = null;
     this.list.name = "";
+    this.location.back();
   }
 
 }
