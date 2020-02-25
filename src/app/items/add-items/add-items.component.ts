@@ -14,6 +14,7 @@ export class AddItemsComponent implements OnInit {
   item: Item = {id: null, name: "", done: false};
   listId: number;
   categoryId: number;
+  errorMsg: string ="";
   
   constructor(
     private route: ActivatedRoute,
@@ -33,7 +34,10 @@ export class AddItemsComponent implements OnInit {
         console.log(res);
         this.location.back();
       }),
-      (res => console.error(res.error)),
+      (res => {
+        console.error(res);
+        this.errorMsg = res.error;
+      }),
       (() => console.log('Fim')));
   }
 
