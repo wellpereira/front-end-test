@@ -26,15 +26,12 @@ const routes: Routes = [
   { path: 'items/edit/:itemId', component: EditItemsComponent},
   { path: 'items/new/:listId', component: AddItemsComponent},
   { path: 'items/:listId', component: ListItemsComponent},
-
   { path: 'list/new/:categoryId', component: AddListsComponent },
   { path: 'list/edit/:listId', component: EditListsComponent },
   { path: 'lists/:categoryId', component: ListListsComponent },
-
   { path: 'categories', component: ListCategoriesComponent },
   { path: 'category/new', component: AddCategoriesComponent },
   { path: 'category/edit/:categoryId', component: EditCategoriesComponent },
-  
   { path: '',    redirectTo: '/categories', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
